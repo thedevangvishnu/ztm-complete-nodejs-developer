@@ -5,7 +5,7 @@
     - Nodejs can run plain-convential js using V8, but it's not only limited to that. 
     - It can also do much more that are out of scope for plain-conventional js. Things like making an http request and getting a response, reading from and writing to a file or database, etc. All these tasks require an extra layer of processing that isn't part of js, but somthing more.
     - Hence, nodejs APIs come into play. APIs like http, fs, path and the like. 
-    - A few of them have been written in js but most of them are written in lower-level languages such as C/C++ and can be used to do the above mentioned processes. These apis are known as "Node.js Bindings"
+    - A few of them have been written in js. But sometimes, to use that extra capabilities such as interacting with OS, cannot be done with plain js. Hence, we use nodejs "bindings" that are sort of a bridge between javascript and lower-level languages like C/C++ that can implement those functionalities.
     - The actual implementation of such APIs lives inside "libuv", which is a library that lets nodejs perform async executions and make it very powerful.
 
     - runtime diagram: 
@@ -14,4 +14,4 @@
     JS Program   -->    |  V8 --> Nodejs apis --> Nodejs bindings --> libuv  |   --> Output
                         |____________________________________________________|
 
-                        
+                
