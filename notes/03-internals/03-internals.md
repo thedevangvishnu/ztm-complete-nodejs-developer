@@ -10,7 +10,7 @@
 
 - Runtime diagram:
 
-  ![Node.js runtime internal](./01-nodejs-runtime-internals.png)
+  ![Node.js runtime internal](./diagrams/01-nodejs-runtime-internals.png)
 
 ## 3.2 - Async vs Sync Programming
 
@@ -31,4 +31,20 @@
 ## 3.4 - Is Node.js multi-threaded?
 
 - What are threads?
-  - "threads" represent the smallest unit of execution withing a process (processes have mutiple threads). They are a sequence of instructions that can be scheduled for execution.
+
+  - "Threads" represent the smallest unit of execution withing a process (processes have mutiple threads). They are a sequence of instructions (such as function calls) that can be scheduled for execution.
+  - Each thread has its own call stack.
+  - Mutiple threads in the same process run asynchronously. All the threads in the same process can share the same memory of the process but not call stacks.
+  - Each core can be dedicated to execute a single thread.
+
+    ![](./diagrams/02-threads.png)
+
+- Nodejs is a JS runtime so it has to align with how the plain JS is and works (highlighting the single-threaded nature of js). But Nodejs has mechanisms inside that also run async operations.
+- Inside a Nodejs process, there is only "one main thread", which run the JS code and also "libuv"
+- "Libuv" has something that is called as "Event loop", that handles all the async operations that were written in the JS code.
+  - Libuv majorily handles two types of async operations: file system related and network related.
+  - Whenver the code written in JS encouters an async call, it pushes it to the event loop and then the event loop decides how and where to delegate this async operation to be executed.
+  - Network calls are delegated to the OS.
+    ![](./diagrams/03-network-async-calls.png)
+  - File system operations are done inside "Thread pool", which is a collection of "four default threads" (excluding the main thread), whose sole purpose is to execute async operations inside a process.
+    ![](./diagrams/04-file-system-async-calls.png)
