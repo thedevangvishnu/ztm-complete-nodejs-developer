@@ -48,3 +48,31 @@
     ![](./diagrams/03-network-async-calls.png)
   - File system operations are done inside "Thread pool", which is a collection of "four default threads" (excluding the main thread), whose sole purpose is to execute async operations inside a process.
     ![](./diagrams/04-file-system-async-calls.png)
+
+## 3.5 Callback queues and Event loop
+
+- Callback queues
+
+  - All the async operations are handled by the event loop. Whenever, each operation finishes, the respective callback for that async operation is made ready to execute. Further async operations when finished, their callbacks also align one after the other in a queue.
+  - This is known as the "callback queue." All of the callbacks inside the callback queue are executed once the control is done executing all the sync code in that process.
+  - Aka: "event queue", "message queue"
+
+- Event loop
+
+  - It's a piece of code or a mechanism inside Nodejs that allows to execute async code.
+  - "Event-driven" architecture:
+    - "event-driven" is a programming paradigm in which the flow of the program is determined by the events such as user actions, sensor outputs or messages from other program.
+    - Nodejs is defined as an "event-driven" JS runtime.
+    - In the context of nodejs, event-driven means that much of the nodejs functionality is build to handle events like incoming network requests, file systems operations or any other async operations.
+
+## 3.6 - Observer Pattern
+
+- It is a design pattern in which an object, known as "Subject", maintains a list of dependents, known as "Observers" and when there is a change in subject's state, all observers are notified and can react to that change/event.
+
+- This design pattern allows a one-to-many dependency between objects.
+
+  ![](./diagrams/05-observer-pattern.png)
+
+- In the context of Nodejs, observer pattern is leveraged inside the event-driven architecture.
+  - Subject: The event emitter acts as the subject (created using EventEmitter class from "events" module of Nodejs).
+  - Observers: All the functions (callbacks) that are registered to listen to specific event of the subject act as the observers. Once the asyn operation/event runs, the oberservers are notified and executed.
