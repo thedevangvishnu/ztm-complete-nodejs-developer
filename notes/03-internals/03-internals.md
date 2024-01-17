@@ -40,13 +40,17 @@
     ![](./diagrams/02-threads.png)
 
 - Nodejs is a JS runtime so it has to align with how the plain JS is and works (highlighting the single-threaded nature of js). But Nodejs has mechanisms inside that also run async operations.
-- Inside a Nodejs process, there is only "one main thread", which run the JS code and also "libuv"
-- "Libuv" has something that is called as "Event loop", that handles all the async operations that were written in the JS code.
+- Inside a Nodejs process, there is only "one main thread", which runs the JS code and also "libuv"
+- "Libuv" has something that is called as "Event loop", that handles all the async operations that are written in the JS code.
+
   - Libuv majorily handles two types of async operations: file system related and network related.
   - Whenver the code written in JS encouters an async call, it pushes it to the event loop and then the event loop decides how and where to delegate this async operation to be executed.
   - Network calls are delegated to the OS.
+
     ![](./diagrams/03-network-async-calls.png)
+
   - File system operations are done inside "Thread pool", which is a collection of "four default threads" (excluding the main thread), whose sole purpose is to execute async operations inside a process.
+
     ![](./diagrams/04-file-system-async-calls.png)
 
 ## 3.5 Callback queues and Event loop
