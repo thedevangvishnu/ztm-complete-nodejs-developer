@@ -6,16 +6,19 @@ const messagesRouter = require("./routes/messages.routes");
 const app = express();
 const publicPath = path.join(__dirname, "public");
 
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
+
 app.use(express.json());
-app.use((req, res, next) => {
-  console.log(__dirname);
-  next();
-});
-app.use("/site", express.static(publicPath));
+
+app.use("/files", express.static(publicPath));
 // expres.static() takes in a relative path string of public folder. Relative to the folder from where we lauch are nodejs server
 
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to Home Page</h1>");
+  res.render("index", {
+    title: "My Express Site Using Template Engines",
+    caption: "Home Page",
+  });
 });
 
 app.use("/users", usersRouter);

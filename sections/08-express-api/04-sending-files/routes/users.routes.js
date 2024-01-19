@@ -10,7 +10,7 @@ const {
 const usersRouter = express.Router();
 
 usersRouter.get("/", getUsers);
-usersRouter.get("//:id", getUser);
+usersRouter.get("/:id", getUser);
 usersRouter.post("/", postUsers);
 
 module.exports = usersRouter;
