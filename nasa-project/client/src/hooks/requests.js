@@ -1,7 +1,11 @@
-const API_URL = "v1";
+const API_URL = "http://localhost:8000";
 
 // Load planets and return as JSON.
-async function httpGetPlanets() {}
+async function httpGetPlanets() {
+  const response = await fetch(`${API_URL}/planets`);
+  const planets = await response.json();
+  return planets;
+}
 
 // Load launches, sort by flight number, and return as JSON.
 async function httpGetLaunches() {}
