@@ -20,7 +20,7 @@ app.use(express.static(publicPath));
 app.use(planetsRouter);
 app.use(launchesRouter);
 
-app.get("/", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(indexFilePath);
 });
 
