@@ -38,7 +38,6 @@ function loadPlanetsData() {
         reject(err);
       })
       .on("end", () => {
-        console.log(`${habitablePlanets.length} planets found!`);
         resolve();
       });
   });
