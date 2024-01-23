@@ -9,23 +9,24 @@ function httpGetAllLaunches(req, res) {
 
 function httpAddNewLaunch(req, res) {
   const launch = req.body;
-  let { mission, rocket, destination, launchDate } = launch;
-  launchDate = new Date(launchDate);
-  console.log(launchDate);
 
-  // input validation
-  if (!mission || !rocket || !destination || !launchDate) {
+  if (
+    !launch.mission ||
+    !launch.rocket ||
+    !launch.launchDate ||
+    !launch.target
+  ) {
     return res.status(400).json({
-      error: "Mission launch properties",
+      error: "Missing required launch property",
     });
   }
 
-  if (isNaN(launchDate)) {
+  launch.launchDate = new Date(launch.launchDate);
+  if (isNaN(launch.launchDate)) {
     return res.status(400).json({
-      error: "Incorrect launch date",
+      error: "Invalid launch date",
     });
   }
-
   addNewLaunch(launch);
   return res.status(201).json(launch);
 }
