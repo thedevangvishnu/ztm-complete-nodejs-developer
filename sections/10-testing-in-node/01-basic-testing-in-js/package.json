@@ -1,0 +1,15 @@
+{
+  "name": "01-basic-testing-in",
+  "version": "1.0.0",
+  "description": "The testing learned in this section has been learned using [the YouTube video](https://www.youtube.com/watch?v=FgnxcUQ5vho) down below:",
+  "main": "cloneArray.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
