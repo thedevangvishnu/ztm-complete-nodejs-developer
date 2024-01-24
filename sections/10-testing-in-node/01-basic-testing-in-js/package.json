@@ -4,7 +4,7 @@
   "description": "The testing learned in this section has been learned using [the YouTube video](https://www.youtube.com/watch?v=FgnxcUQ5vho) down below:",
   "main": "cloneArray.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",

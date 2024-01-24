@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1706074911109" clover="3.2.0">
+  <project timestamp="1706074911109" name="All files">
+    <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3" elements="9" coveredelements="9" complexity="0" loc="6" ncloc="6" packages="1" files="3" classes="3"/>
+    <file name="cloneArray.js" path="/home/devang/CS/webdev/learning/backend/ztm-complete-nodejs-developer/sections/10-testing-in-node/01-basic-testing-in-js/js/cloneArray.js">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+    </file>
+    <file name="subtract.js" path="/home/devang/CS/webdev/learning/backend/ztm-complete-nodejs-developer/sections/10-testing-in-node/01-basic-testing-in-js/js/subtract.js">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+    </file>
+    <file name="sum.js" path="/home/devang/CS/webdev/learning/backend/ztm-complete-nodejs-developer/sections/10-testing-in-node/01-basic-testing-in-js/js/sum.js">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
