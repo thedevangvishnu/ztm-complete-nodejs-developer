@@ -2,7 +2,7 @@ const request = require("supertest");
 const app = require("../../app");
 
 describe("Test GET /launches", () => {
-  test("Respond with 200 success", async () => {
+  test("Get all launches with 200 success", async () => {
     const response = await request(app)
       .get("/launches")
       .expect("Content-Type", /json/)
@@ -24,18 +24,18 @@ describe("Test POST /launches", () => {
     target: "Kepler-186 f",
   };
 
-  const launchDateWithIncorrectDate = {
+  const launchDataWithIncorrectDate = {
     mission: "USS Enterprise",
     rocket: "NCC 1801-D",
     target: "Kepler-186 f",
     launchDate: "hello",
   };
 
-  test("Response with 201 created", async () => {
+  test("Post launch with 201 created", async () => {
     const response = await request(app)
       .post("/launches")
       .send(completeLaunchData)
-      .expect("Content-type", /json/)
+      .expect("Content-Type", /json/)
       .expect(201);
 
     const requestDate = new Date(completeLaunchData.launchDate).valueOf();
@@ -45,7 +45,7 @@ describe("Test POST /launches", () => {
     expect(response.body).toMatchObject(launchDataWithoutDate);
   });
 
-  test("Catch missing input properties", async () => {
+  test("Catch error: missing input properties", async () => {
     const response = await request(app)
       .post("/launches")
       .send(launchDataWithoutDate)
@@ -57,10 +57,10 @@ describe("Test POST /launches", () => {
     });
   });
 
-  test("Catch invalid dates", async () => {
+  test("Catch error: invalid launch date", async () => {
     const response = await request(app)
       .post("/launches")
-      .send(launchDateWithIncorrectDate)
+      .send(launchDataWithIncorrectDate)
       .expect("Content-Type", /json/)
       .expect(400);
 
