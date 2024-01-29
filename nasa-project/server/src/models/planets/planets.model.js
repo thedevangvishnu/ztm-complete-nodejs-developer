@@ -51,7 +51,7 @@ function loadPlanetsData() {
       .pipe(parser)
       .on("data", async (data) => {
         if (isHabitable(data)) {
-          savePlanet(data);
+          await savePlanet(data);
         }
       })
       .on("error", (err) => {
@@ -64,7 +64,13 @@ function loadPlanetsData() {
 }
 
 async function getAllPlanets() {
-  return await planets.find({});
+  return await planets.find(
+    {},
+    {
+      _id: 0,
+      __v: 0,
+    }
+  );
 }
 
 module.exports = {
