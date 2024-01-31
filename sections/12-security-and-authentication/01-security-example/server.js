@@ -15,13 +15,26 @@ const server = https.createServer(
 const PORT = 3000;
 const indexPath = path.join(__dirname, "public", "index.html");
 
+const checkLoggedIn = (req, res, next) => {
+  let isLoggedIn = true;
+  if (!isLoggedIn) {
+    return res.status(401).json({ error: "You must login" });
+  }
+
+  next();
+};
+
 app.use(helmet());
 
 app.get("/", (req, res) => {
   res.sendFile(indexPath);
 });
 
-app.get("/security", (req, res) => {
+app.get("/auth/google", (req, res) => {});
+app.get("/auth/google/callback", (req, res) => {});
+app.get("/auth/logout", (req, res) => {});
+
+app.get("/secret", checkLoggedIn, (req, res) => {
   res.json({ message: "You security key is 32" });
 });
 
