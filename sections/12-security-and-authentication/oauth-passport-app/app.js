@@ -2,10 +2,24 @@ const express = require("express");
 const authRouter = require("./routes/auth-routes");
 const passportSetup = require("./config/passport-setup");
 const { connectToMongoDB } = require("./config/mongodb");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+
+require("dotenv").config();
 
 const app = express();
 
 app.set("view engine", "ejs");
+
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [process.env.COOKIE_KEY],
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/auth", authRouter);
 
