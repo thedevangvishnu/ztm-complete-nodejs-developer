@@ -116,7 +116,6 @@ app.get("/auth/logout", (req, res, next) => {
     }
     return res.redirect("/");
   });
-  r;
 });
 
 app.get("/secret", checkLoggedIn, (req, res) => {
